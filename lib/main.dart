@@ -27,35 +27,51 @@ class MyPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('latihan composing'),
       ),
-      body: Container(
-        color: Colors.lightBlue,
-        child: Row(
-          children: [
-            const CircleAvatar(
-              backgroundColor: Colors.redAccent,
-              child: FlutterLogo(),
+      body: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.all(8),
+            padding: EdgeInsets.symmetric(horizontal: 8),
+            decoration: BoxDecoration(
+              color: Colors.lightBlue,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20)
+              ),
+              border: Border.all(
+                color: Colors.red,
+                width: 2
+              )
             ),
-            Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text('Bayu Angga Wijaya'),
-                      Row(
-                        children: const [
-                          Icon(Icons.check),
-                          Text('okee')
+            child: Row(
+              children: [
+                const CircleAvatar(
+                  backgroundColor: Colors.redAccent,
+                  child: FlutterLogo(),
+                ),
+                Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text('Bayu Angga Wijaya'),
+                          Row(
+                            children: const [
+                              Icon(Icons.check),
+                              Text('okee')
+                            ],
+                          )
                         ],
-                      )
-                    ],
-                  ),
-                )
+                      ),
+                    )
+                ),
+                const Text('yesterday')
+              ],
             ),
-            const Text('yesterday')
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
