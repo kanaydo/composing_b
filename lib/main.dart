@@ -33,7 +33,7 @@ class MyPage extends StatelessWidget {
             margin: EdgeInsets.all(8),
             padding: EdgeInsets.symmetric(horizontal: 8),
             decoration: BoxDecoration(
-              color: Colors.lightBlue,
+              color: Colors.lightBlue.shade100,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20)
@@ -56,10 +56,20 @@ class MyPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text('Bayu Angga Wijaya'),
+                          const Text(
+                              'Bayu Angga Wijaya',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold
+                              ),
+                          ),
                           Row(
                             children: const [
-                              Icon(Icons.check),
+                              Icon(
+                                  Icons.check,
+                                  size: 15,
+                                  color: Colors.lightBlue,
+                              ),
                               Text('okee')
                             ],
                           )
@@ -67,7 +77,14 @@ class MyPage extends StatelessWidget {
                       ),
                     )
                 ),
-                const Text('yesterday')
+                const Text(
+                  'yesterday',
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.grey
+                  ),
+                )
               ],
             ),
           ),
