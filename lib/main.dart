@@ -19,22 +19,36 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class ChatData {
+  final String name;
+  final String lastChat;
+  final String lastSeen;
+  ChatData({
+    required this.name,
+    required this.lastChat,
+    required this.lastSeen
+  });
+}
+
 class MyPage extends StatelessWidget {
   MyPage({Key? key}) : super(key: key);
 
   final data = [
-    "januari",
-    "februari",
-    "maret",
-    "april",
-    "mei",
-    "juni",
-    "juli",
-    "agustus",
-    "september",
-    "oktober",
-    "novermber",
-    "desember"
+    ChatData(
+      name: 'Tony Stark',
+      lastChat: 'apa kabar?',
+      lastSeen: 'one month ago'
+    ),
+    ChatData(
+        name: 'Steve Rogers',
+        lastChat: 'okee',
+        lastSeen: 'today'
+    ),
+    ChatData(
+        name: 'Natasha Romonav',
+        lastChat: 'otw',
+        lastSeen: 'yesterday'
+    )
   ];
 
   @override
@@ -46,7 +60,10 @@ class MyPage extends StatelessWidget {
       body: ListView.builder(
         itemCount: data.length,
         itemBuilder: (context, index) {
-          return ChatItem();
+          final chat = data[index];
+          return ChatItem(
+            chatData: chat,
+          );
         },
       ),
     );
