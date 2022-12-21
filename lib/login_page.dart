@@ -1,4 +1,5 @@
 import 'package:composing/main.dart';
+import 'package:composing/session.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -9,6 +10,9 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final session = Session();
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 32),
@@ -35,13 +39,16 @@ class LoginPage extends StatelessWidget {
                   final username = usernameController.text;
                   final password = passwordController.text;
                   if (username == 'user' && password == '123456') {
+
+                    session.setLogin();
+
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text('login berhasil'),
                         backgroundColor: Colors.green,
                       )
                     );
-                    Navigator.push(
+                    Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => MyPage()

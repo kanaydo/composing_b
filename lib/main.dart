@@ -1,8 +1,12 @@
 import 'package:composing/chat_item.dart';
 import 'package:composing/login_page.dart';
+import 'package:composing/session.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox('session');
   runApp(const MyApp());
 }
 
@@ -10,12 +14,15 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
+
+    final session = Session();
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage(),
+      home: session.isLogin() ? MyPage() : LoginPage(),
     );
   }
 }
@@ -55,9 +62,9 @@ class MyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   // title: Text('latihan composing'),
-      // ),
+      appBar: AppBar(
+        title: Text('latihan composing'),
+      ),
       body: ListView.builder(
         itemCount: data.length,
         itemBuilder: (context, index) {
