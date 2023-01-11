@@ -1,7 +1,7 @@
 import 'package:composing/main.dart';
 import 'package:flutter/material.dart';
 
-class ChatPage extends StatelessWidget {
+class ChatPage extends StatefulWidget {
   final ChatData chatData;
   const ChatPage({
     Key? key,
@@ -9,16 +9,27 @@ class ChatPage extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<ChatPage> createState() => _ChatPageState();
+}
+
+class _ChatPageState extends State<ChatPage> {
+
+  String message = '';
+  final messageController = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(chatData.name),
+        title: Text(widget.chatData.name),
       ),
       body: SafeArea(
         child: Column(
           children: [
             Expanded(
-                child: ListView()
+                child: Center(
+                  child: Text(message),
+                )
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -26,6 +37,7 @@ class ChatPage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: TextField(
+                      controller: messageController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                       ),
@@ -37,7 +49,13 @@ class ChatPage extends StatelessWidget {
                     backgroundColor: Colors.green,
                     child: IconButton(
                         color: Colors.white,
-                        onPressed: () {},
+                        onPressed: () {
+                          String msg = messageController.text;
+
+                          setState(() {
+                            message = msg;
+                          });
+                        },
                         icon: Icon(Icons.send)
                     ),
                   )
